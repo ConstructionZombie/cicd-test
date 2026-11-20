@@ -17,7 +17,7 @@ func TestGetAPIKey(t *testing.T) {
 	}{
 		{name: "No Auth Header Present", headers: http.Header{"YeaWild": []string{"True"}}, want: "", wantErr: true},
 		{name: "Malformed Header", headers: http.Header{"Authorization": []string{"letmeinpls"}}, want: "", wantErr: true},
-		{name: "Valid Header", headers: http.Header{"Authorization": []string{"ApiKey secret123"}}, want: "secret123", wantErr: false},
+		{name: "Valid Header", headers: http.Header{"Authorization": []string{"ApiKey secret123"}}, want: "secret123", wantErr: true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
